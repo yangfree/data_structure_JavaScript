@@ -4,6 +4,11 @@ import router from './router'
 import store from './store'
 import $http from '@/api/axios';
 
+import 'normalize.css';
+import '@/common/style/common.less';
+import '@/common/style/transition.less';
+import '@/common/iconFonts/iconfont.css';
+
 Vue.config.productionTip = false
 
 new Vue({

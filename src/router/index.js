@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: '*',
-    redirect: '../views/Home.vue'
+    redirect: '/'
   },
 ]
 
