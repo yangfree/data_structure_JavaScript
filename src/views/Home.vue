@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <MHeader></MHeader>
+    <MHeader
+      :title="home.title"
+      :des="home.description"
+      :nav="home.nav"
+    ></MHeader>
     <div class="home-banner">
       <div class="banner-main">
         <div class="version">
           <!-- <i class="iconfont icon-banben"></i> -->
-          <b>v1.0.0</b>
+          <b>{{ home.version | version }}</b>
         </div>
         <div class="word">
           <span>简单｜</span>
@@ -49,37 +53,76 @@
         </div>
       </div>
     </div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <!-- <AlertMsg
-      typeClass="warning"
-      content="提示信息"
-      date="1000"
-    ></AlertMsg> -->
-    <MFooter></MFooter>
+    <AlertMsg :typeClass="typeClass" :content="content" :date="date"></AlertMsg>
+    <MFooter
+      :icp="home.icp"
+      :createBy="home.createBy"
+      :createDate="home.createDate"
+    ></MFooter>
   </div>
 </template>
 
 <script>
 import MHeader from "@/components/MHeader.vue";
 import MFooter from "@/components/MFooter.vue";
-import { getHome } from "@/api/api.js";
-// import AlertMsg from "@/components/AlertMsg.vue";
+import { getHome, getProjects } from "@/api/api.js";
+import AlertMsg from "@/components/AlertMsg.vue";
 
 export default {
   name: "Home",
   components: {
     MHeader,
-    MFooter
-    // AlertMsg
+    MFooter,
+    AlertMsg
   },
   data() {
     return {
-      // typeClass: "warning"
+      home: {
+        title: "",
+        description: "",
+        icp: "",
+        createBy: "",
+        createDate: "",
+        version: ""
+      },
+      typeClass: "",
+      content: "",
+      date: "1500"
     };
   },
-  methods: {},
   mounted() {
-    console.log(getHome);
+    this.getHomeInfo();
+  },
+  methods: {
+    getHomeInfo() {
+      getHome()
+        .then(res => {
+          if (res.status == 0) {
+            this.home = res.data;
+            // console.log(res.data);
+          } else {
+            this.typeClass = "warning";
+            this.content = res.msg;
+          }
+        })
+        .catch(error => {
+          this.typeClass = "error";
+          this.content = error;
+        });
+      getProjects()
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          this.typeClass = "error";
+          this.content = res;
+        });
+    }
+  },
+  filters: {
+    version(val) {
+      return `V ${val}.0.0`;
+    }
   }
 };
 </script>

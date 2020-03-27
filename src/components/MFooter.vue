@@ -1,26 +1,39 @@
 <template>
   <div class="footer">
     <footer class="footer-div">
-      <span>111111111</span>
-      <span>222222222</span>
+      <div class="footer-left">
+        <span>Create By {{ createBy }} | {{ createDate }}</span>
+      </div>
+      <div class="footer-right">
+        <a href="http://www.beian.miit.gov.cn/">{{ icp }}</a>
+      </div>
     </footer>
   </div>
 </template>
 
 <script>
 export default {
-  name: ""
+  name: "MFooter",
+  props: {
+    icp: {
+      type: String,
+      default: ""
+    },
+    createBy: {
+      type: String,
+      default: ""
+    },
+    createDate: {
+      type: String,
+      default: ""
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .footer {
-//   position: absolute;
-//   bottom: 0;
-//   left: 0;
   width: 100%;
-  //   padding: 0 10%;
-  //   box-sizing: border-box;
 
   .footer-div {
     margin: 0 auto;
@@ -28,8 +41,10 @@ export default {
     height: 60px;
     line-height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     border-top: 1px solid #ccc;
+    padding: 0 15px;
+    box-sizing: border-box;
   }
 }
 </style>

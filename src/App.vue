@@ -11,8 +11,3 @@
   </div>
 </template>
 
-<style lang="less">
-// #app {
-//   position: relative;
-// }
-</style>

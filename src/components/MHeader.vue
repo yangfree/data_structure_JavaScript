@@ -3,16 +3,13 @@
     <header class="header-main">
       <div class="header-left">
         <h2>
-          杨洁个人网站
+          {{title}}
         </h2>
-        <p>说点什么呢？还是什么都不说就算了吧。</p>
+        <p>{{des}}</p>
       </div>
       <nav class="header-right">
         <ul>
-          <li>导航1</li>
-          <li>导航2</li>
-          <li>导航3</li>
-          <li>导航4</li>
+          <li v-for='(item,index) in nav' :key="index">{{item.item}}</li>
         </ul>
       </nav>
     </header>
@@ -21,7 +18,23 @@
 
 <script>
 export default {
-  name: "MHeader"
+  name: "MHeader",
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    des: {
+      type: String,
+      default: ''
+    },
+    nav: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    }
+  }
 };
 </script>
 
@@ -40,7 +53,7 @@ export default {
     display: flex;
     justify-content: space-between;
     .header-left {
-      flex: 2;
+      flex: 3;
       p {
         margin: 10px 0 5px;
         font-size: 14px;
@@ -49,11 +62,19 @@ export default {
       }
     }
     .header-right {
-      flex: 3;
+      flex: 1;
       ul {
         //   flex-direction: row-reverse;
         display: flex;
         justify-content: space-between;
+        margin-top: 15px;
+        li {
+          cursor: pointer;
+        }
+        li:hover {
+          transform: scale(1.5);
+          transition: all 0.5 ease-in;
+        }
       }
     }
   }

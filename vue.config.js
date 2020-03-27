@@ -5,10 +5,10 @@ module.exports = {
     port: 8082,
     proxy: {
       "/home": {
-        target: "http://localhost:3002",
+        target: "http://localhost:3001",
         ws: true,
         changeOrigin: true
-      }
+      },
     }
   },
   configureWebpack: {
