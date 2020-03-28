@@ -9,6 +9,11 @@ module.exports = {
         ws: true,
         changeOrigin: true
       },
+      "/resume": {
+        target: "http://localhost:3001",
+        ws: true,
+        changeOrigin: true
+      },
     }
   },
   configureWebpack: {

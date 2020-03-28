@@ -7,3 +7,7 @@ export const getHome = params => {
 export const getProjects = params => {
   return get("/home/project", params);
 };
+
+export const getResume = params => {
+  return get("/resume", params);
+};

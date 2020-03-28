@@ -27,27 +27,23 @@
           <div class="main-left">
             <div class="left-content transiton-box">
               <div class="transtion">
-                <h3>我是项目一</h3>
+                <h3>{{ projectLeft.name }}</h3>
                 <div class="description">
-                  我是项目一的介绍有什么可说的呢什么都没有你就是个垃圾库萨开会接哈收到就好计划计划霍建华结婚好骄兵必败家笔记本
+                  {{ projectLeft.description }}
                 </div>
               </div>
             </div>
           </div>
           <div class="main-right">
-            <div class="right-content transiton-box">
+            <div
+              class="right-content transiton-box"
+              v-for="(item, index) in projectRight"
+              :key="index"
+            >
               <div class="transtion">
-                <h3>我是项目一</h3>
+                <h3>{{ item.name }}</h3>
                 <div class="description">
-                  我是项目一的介绍有什么可说的呢什么都没有你就是个垃圾库萨开会接哈收到就好计划计划霍建华结婚好骄兵必败家笔记本
-                </div>
-              </div>
-            </div>
-            <div class="right-content transiton-box bottom">
-              <div class="transtion">
-                <h3>我是项目一</h3>
-                <div class="description">
-                  我是项目一的介绍有什么可说的呢什么都没有你就是个垃圾库萨开会接哈收到就好计划计划霍建华结婚好骄兵必败家笔记本
+                  {{ item.description }}
                 </div>
               </div>
             </div>
@@ -87,6 +83,8 @@ export default {
         createDate: "",
         version: ""
       },
+      projectLeft: {},
+      projectRight: [],
       typeClass: "",
       content: "",
       date: "1500"
@@ -101,7 +99,6 @@ export default {
         .then(res => {
           if (res.status == 0) {
             this.home = res.data;
-            // console.log(res.data);
           } else {
             this.typeClass = "warning";
             this.content = res.msg;
@@ -114,6 +111,13 @@ export default {
       getProjects()
         .then(res => {
           console.log(res);
+          if (res.status == 0) {
+            this.projectLeft = res.data.projectLeft;
+            this.projectRight = res.data.projectRight;
+          } else {
+            this.typeClass = "warning";
+            this.content = res.msg;
+          }
         })
         .catch(err => {
           this.typeClass = "error";

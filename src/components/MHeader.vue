@@ -3,13 +3,15 @@
     <header class="header-main">
       <div class="header-left">
         <h2>
-          {{title}}
+          {{ title }}
         </h2>
-        <p>{{des}}</p>
+        <p>{{ des }}</p>
       </div>
       <nav class="header-right">
         <ul>
-          <li v-for='(item,index) in nav' :key="index">{{item.item}}</li>
+          <li v-for="(item, index) in nav" :key="index" @click="goSome(item.path)">
+            {{ item.item }}
+          </li>
         </ul>
       </nav>
     </header>
@@ -22,17 +24,22 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: ""
     },
     des: {
       type: String,
-      default: ''
+      default: ""
     },
     nav: {
       type: Array,
       default: function() {
         return [];
       }
+    }
+  },
+  methods: {
+    goSome(path) {
+      this.$router.push(`/${path}`);
     }
   }
 };
@@ -49,6 +56,7 @@ export default {
   margin-right: auto;
   padding: 30px 0;
   background-color: transparent;
+  z-index: 99;
   .header-main {
     display: flex;
     justify-content: space-between;
@@ -73,7 +81,7 @@ export default {
         }
         li:hover {
           transform: scale(1.5);
-          transition: all 0.5 ease-in;
+          transition: all 0.5s ease-in-out;
         }
       }
     }
