@@ -8,13 +8,15 @@
     <div class="home-banner">
       <div class="banner-main">
         <div class="version">
-          <!-- <i class="iconfont icon-banben"></i> -->
           <b>{{ home.version | version }}</b>
         </div>
         <div class="word">
           <span>简单｜</span>
           <span>优雅｜</span>
           <span>高效</span>
+        </div>
+        <div class="blog-btn">
+          <a href="https://blog.jiepp.com/" target="_blank">个人博客</a>
         </div>
       </div>
     </div>
