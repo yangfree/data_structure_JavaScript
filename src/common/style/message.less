@@ -1,0 +1,97 @@
+.message {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+  .message-content {
+    width: 800px;
+    margin: 20px auto;
+    box-shadow: 1px 1px 100px #eee inset;
+    .message-post {
+      padding: 10px;
+      box-sizing: border-box;
+      .text {
+        padding: 15px;
+        textarea {
+          display: block;
+          width: 100%;
+          border: none;
+          height: 120px;
+          line-height: 25px;
+          padding: 5px 15px;
+          font-size: 14px;
+          box-sizing: border-box;
+          outline: none;
+          background-attachment: scroll;
+          // background-color: #f7f7f7;
+          resize: none;
+          color: #777;
+        }
+      }
+      .user {
+        display: flex;
+        justify-content: space-between;
+        .user-left {
+          span {
+            font-size: 14px;
+            color: #777;
+            line-height: 35px;
+            padding: 0 15px;
+          }
+        }
+        input[type="text"] {
+          width: 120px;
+          border: none;
+          height: 35px;
+          outline: none;
+          padding-left: 10px;
+          color: #777;
+        }
+        button {
+          height: 35px;
+          line-height: 35px;
+          background-color: skyblue;
+          color: #fff;
+          border: none;
+          width: 120px;
+          border-radius: 5px;
+          cursor: pointer;
+          outline: none;
+          margin-left: 15px;
+        }
+        .disabled {
+          cursor: not-allowed;
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+  .message-list {
+    margin: 35px 0;
+    border-top: 1px solid #ccc;
+    h2 {
+      margin: 35px 0;
+    }
+    ul {
+      margin: 0 50px;
+      // list-style: circle;
+      li {
+        padding: 25px 0 10px 0;
+        border-bottom: 1px dashed #eee;
+        line-height: 25px;
+        .top {
+          display: flex;
+          justify-content: space-between;
+        }
+        .footer {
+          text-align: right;
+          // .good {
+          //     margin-left: 15px;
+          // }
+        }
+        .content {
+          text-indent: 2em;
+        }
+      }
+    }
+  }
+}

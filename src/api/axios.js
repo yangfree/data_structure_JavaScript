@@ -1,6 +1,5 @@
 import qs from "qs";
 import axios from "axios";
-import { reject } from "async";
 
 const $http = axios.create();
 
@@ -28,10 +27,10 @@ $http.interceptors.response.use(
     if (errStatus) {
       switch (errStatus) {
         case 404:
-          alert("接口不存在");
+          console.log("接口不存在");
           break;
         default:
-          alert("错误提示");
+          console.log("错误提示");
       }
     }
     return Promise.reject(error.response);

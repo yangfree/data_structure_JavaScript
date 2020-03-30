@@ -1,8 +1,7 @@
 <template>
   <transition name="malert">
-    <div class="alert" v-if="isShow">
+    <div class="alert" v-show="isShow">
       <div class="content" :class="[typeClass]">
-        <i></i>
         <div>{{ content }}</div>
       </div>
     </div>
@@ -15,15 +14,16 @@ export default {
   props: {
     typeClass: {
       type: String,
-      default: ""
+      default: "",
+      required: true
     },
     content: {
       type: String,
       default: "提示信息"
     },
     date: {
-      type: String,
-      default: 1000
+      type: Number,
+      default: 2000
     }
   },
   data() {
@@ -31,14 +31,13 @@ export default {
       isShow: true
     };
   },
-  mounted() {
-    this.show();
-  },
+  mounted() {},
   methods: {
-    show() {
+    close() {
       setTimeout(() => {
         this.isShow = false;
       }, this.date);
+      this.isShow = true;
     }
   }
 };
@@ -47,28 +46,29 @@ export default {
 <style lang="less" scoped>
 .alert {
   position: fixed;
-  top: 10%;
+  top: 20px;
   display: flex;
   justify-content: center;
   line-height: 16px;
-  width: 100%;
+  width: 1200px;
   font-size: 14px;
+  z-index: 100;
+  box-sizing: border-box;
   .content {
-    color: #444;
-    padding: 5px 0;
-    width: 200px;
+    color: #fff;
+    padding: 5px 10px;
   }
   .warning {
-    background-color: orange;
+    background-color: #f0ad4d;
   }
   .error {
     background-color: #ff0000;
   }
   .success {
-    background-color: rgb(76, 104, 34);
+    background-color: #5cb85c;
   }
   .default {
-    background-color: #fff;
+    background-color: #5bc0de;
   }
 }
 </style>

@@ -14,6 +14,11 @@ module.exports = {
         ws: true,
         changeOrigin: true
       },
+      "/message": {
+        target: "http://localhost:3001",
+        ws: true,
+        changeOrigin: true
+      }
     }
   },
   configureWebpack: {
