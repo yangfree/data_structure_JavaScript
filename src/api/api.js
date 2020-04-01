@@ -17,10 +17,20 @@ export const getResume = params => {
 
 // 留言提交接口
 export const postMsg = params => {
-  return post('/message/add', params);
-}
+  return post("/message/add", params);
+};
 
 // 获取留言接口
 export const getMsg = params => {
-  return get('/message/list', params);
-}
+  return get("/message/list", params);
+};
+
+// 关于页面请求
+export const getAbout = params => {
+  return get("/about", params);
+};
+
+// 关于友情链接请求
+export const getConnect = params => {
+  return get("/connect", params);
+};

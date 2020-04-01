@@ -18,6 +18,16 @@ module.exports = {
         target: "http://localhost:3001",
         ws: true,
         changeOrigin: true
+      },
+      "/about": {
+        target: "http://localhost:3001",
+        ws: true,
+        changeOrigin: true
+      },
+      "/connect": {
+        target: "http://localhost:3001",
+        ws: true,
+        changeOrigin: true
       }
     }
   },

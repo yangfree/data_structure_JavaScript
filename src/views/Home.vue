@@ -7,7 +7,7 @@
     ></MHeader>
     <div class="home-banner">
       <div class="banner-main">
-        <div class="version">
+        <div class="version" @click="toAbout">
           <b>{{ home.version | version }}</b>
         </div>
         <div class="word">
@@ -94,6 +94,9 @@ export default {
     this.getHomeInfo();
   },
   methods: {
+    toAbout() {
+      this.$router.push("/about");
+    },
     getHomeInfo() {
       getHome()
         .then(res => {
