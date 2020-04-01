@@ -41,22 +41,25 @@ export default {
     };
   },
   mounted() {
-    getAbout()
-      .then(res => {
-        if (res.status === "0") {
-          this.title = res.data.title;
-          this.choose = res.data.choose;
-          this.nextVersion = res.data.nextVersion;
-        } else {
-          console.log(res.message);
-        }
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    this.getInfo();
   },
-  methods: {}
+  methods: {
+    getInfo() {
+      getAbout()
+        .then(res => {
+          if (res.status === "0") {
+            this.title = res.data.title;
+            this.choose = res.data.choose;
+            this.nextVersion = res.data.nextVersion;
+          } else {
+            console.log(res.message);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>
 

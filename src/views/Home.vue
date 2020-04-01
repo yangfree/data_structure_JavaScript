@@ -51,12 +51,18 @@
         </div>
       </div>
     </div>
-    <AlertMsg :typeClass="typeClass" :content="content" :date="date"></AlertMsg>
+    <AlertMsg
+      ref="Alert"
+      :typeClass="alertBox.typeClass"
+      :content="alertBox.content"
+      :date="alertBox.date"
+    />
     <MFooter
       :icp="home.icp"
       :createBy="home.createBy"
       :createDate="home.createDate"
     ></MFooter>
+    <loading v-if="loading" />
   </div>
 </template>
 
@@ -65,13 +71,15 @@ import MHeader from "@/components/MHeader.vue";
 import MFooter from "@/components/MFooter.vue";
 import { getHome, getProjects } from "@/api/api.js";
 import AlertMsg from "@/components/AlertMsg.vue";
+import Loading from "@/components/Loading.vue";
 
 export default {
   name: "Home",
   components: {
     MHeader,
     MFooter,
-    AlertMsg
+    AlertMsg,
+    Loading
   },
   data() {
     return {
@@ -85,9 +93,12 @@ export default {
       },
       projectLeft: {},
       projectRight: [],
-      typeClass: "",
-      content: "",
-      date: "1500"
+      alertBox: {
+        typeClass: "",
+        content: "",
+        date: 1500
+      },
+      loading: true
     };
   },
   mounted() {
@@ -98,33 +109,31 @@ export default {
       this.$router.push("/about");
     },
     getHomeInfo() {
-      getHome()
+      Promise.all([getHome(), getProjects()])
         .then(res => {
-          if (res.status == 0) {
-            this.home = res.data;
+          this.loading = false;
+          // 首页信息接口处理
+          if (res[0].status == 0) {
+            this.home = res[0].data;
           } else {
-            this.typeClass = "warning";
-            this.content = res.msg;
+            this.alertBox.typeClass = "warning";
+            this.alertBox.content = res.msg;
+            this.$refs.Alert.close();
           }
-        })
-        .catch(error => {
-          this.typeClass = "error";
-          this.content = error;
-        });
-      getProjects()
-        .then(res => {
-          console.log(res);
-          if (res.status == 0) {
-            this.projectLeft = res.data.projectLeft;
-            this.projectRight = res.data.projectRight;
+          // 项目接口处理
+          if (res[1].status == 0) {
+            this.projectLeft = res[1].data.projectLeft;
+            this.projectRight = res[1].data.projectRight;
           } else {
-            this.typeClass = "warning";
-            this.content = res.msg;
+            this.alertBox.typeClass = "warning";
+            this.alertBox.content = res.msg;
+            this.$refs.Alert.close();
           }
         })
         .catch(err => {
-          this.typeClass = "error";
-          this.content = res;
+          this.alertBox.typeClass = "error";
+          this.alertBox.content = err;
+          this.$refs.Alert.close();
         });
     }
   },

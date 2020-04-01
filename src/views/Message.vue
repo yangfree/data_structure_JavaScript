@@ -58,6 +58,7 @@
       :content="alertbox.content"
       :date="alertbox.date"
     />
+    <Loading v-if="loading"/>
   </div>
 </template>
 
@@ -66,12 +67,14 @@ import MRouter from "@/components/MRouter";
 import AlertMsg from "../components/AlertMsg";
 import { getMsg, postMsg } from "@/api/api.js";
 import { dateFormat } from "@/utils/index.js";
+import Loading from '@/components/Loading';
 
 export default {
   name: "Message",
   components: {
     MRouter,
-    AlertMsg
+    AlertMsg,
+    Loading
   },
   mounted() {
     this.getMsgList();
@@ -88,16 +91,19 @@ export default {
       },
       btnTime: 30,
       btnVal: "提交",
-      canClick: true
+      canClick: true,
+      loading: true
     };
   },
   methods: {
     reply(content, name) {
       this.msg = `回复${name}: ${content}`;
+      document.documentElement.scrollTop = 0;
     },
     getMsgList() {
       getMsg()
         .then(res => {
+          this.loading = false;
           if (res.status === "0") {
             this.msgList = res.data;
           } else {

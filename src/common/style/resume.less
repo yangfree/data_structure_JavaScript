@@ -44,30 +44,31 @@
     }
   }
   .resume-work {
-      line-height: 25px;
-      ul {
+    line-height: 25px;
+    ul {
+      li {
+        margin-bottom: 25px;
+        border-bottom: 1px dashed transparent;
+        .title,
+        .body {
+          display: flex;
+          justify-content: space-between;
+        }
+        ol {
+          list-style: circle;
+          margin-left: 2em;
           li {
-              margin-bottom: 25px;
-              .title, .body {
-                  display: flex;
-                  justify-content: space-between;
-              }
-              ol {
-                  list-style: circle;
-                  margin-left: 2em;
-                  li {
-                      word-break: break-all;
-                      word-wrap: break-word;
-                      margin-bottom: 10px;
-                  }
-              }
+            word-break: break-all;
+            word-wrap: break-word;
+            margin-bottom: 10px;
           }
-          .list-item:hover {
-              padding: 15px;
-              box-shadow: 1px 1px 15px skyblue;
-              transition: all .5s ease-out;
-          }
+        }
       }
+      .list-item:hover {
+        border-bottom: 1px dashed #ccc;
+        transition: all 0.5s ease-out;
+      }
+    }
   }
   .resume-person {
     p {
