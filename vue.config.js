@@ -4,28 +4,8 @@ module.exports = {
   devServer: {
     port: 8082,
     proxy: {
-      "/home": {
-        target: "http://localhost:3001",
-        ws: true,
-        changeOrigin: true
-      },
-      "/resume": {
-        target: "http://localhost:3001",
-        ws: true,
-        changeOrigin: true
-      },
-      "/message": {
-        target: "http://localhost:3001",
-        ws: true,
-        changeOrigin: true
-      },
-      "/about": {
-        target: "http://localhost:3001",
-        ws: true,
-        changeOrigin: true
-      },
-      "/connect": {
-        target: "http://localhost:3001",
+      "/api": {
+        target: "http://127.0.0.1:3000",
         ws: true,
         changeOrigin: true
       }
