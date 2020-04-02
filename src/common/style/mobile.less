@@ -1,0 +1,102 @@
+@media screen and (max-width: 900px) {
+  .header {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    .header-main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 10%;
+      .header-left {
+        text-align: center;
+        margin-bottom: 5%;
+        p {
+          display: none;
+        }
+      }
+      .header-right {
+        display: block;
+      }
+    }
+  }
+  .home-banner {
+    height: 350px !important;
+  }
+  .home-projects {
+    .projects-content {
+      margin: 10% !important;
+      .project-main {
+        flex-direction: column !important;
+        height: auto !important;
+        .main-left {
+          .left-content {
+            height: 192px !important;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    .footer-div {
+      justify-content: center !important;
+      .footer-left {
+        display: none;
+      }
+    }
+  }
+
+  .resume {
+    padding: 5% 10% !important;
+    font-size: 14px !important;
+    .resume-work {
+      ul {
+        .list-item {
+          .title {
+            span:nth-child(2) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .about {
+    padding: 0 0 5% !important;
+    .about-content {
+      padding: 15px !important;
+    }
+    .router {
+      padding: 0 5%;
+    }
+  }
+  .message {
+    padding: 0 0 5% !important;
+    .message-content {
+      margin: 0 auto !important;
+    }
+    .message-list {
+      h2 {
+        margin: 15px 0 !important;
+        padding: 0 5%;
+      }
+    }
+    .router {
+      padding: 0 5%;
+    }
+  }
+  .connect {
+    padding: 0 0 5% !important;
+    h2 {
+      margin: 15px 0 !important;
+      text-align: center;
+    }
+    ul {
+      flex-direction: column !important;
+    }
+    .router {
+      padding: 0 5%;
+    }
+  }
+}

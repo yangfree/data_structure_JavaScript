@@ -1,19 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import $http from '@/api/axios';
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 
-import 'normalize.css';
-import '@/common/style/common.less';
-import '@/common/style/transition.less';
-import '@/common/iconFonts/iconfont.css';
+import "normalize.css";
+import "@/common/style/common.less";
+import "@/common/style/transition.less";
+import "@/common/style/mobile.less";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  $http,
   router,
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

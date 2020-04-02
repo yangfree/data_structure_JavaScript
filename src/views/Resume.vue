@@ -4,8 +4,13 @@
     <div class="resume-header">
       <h2>{{ title }}</h2>
       <div class="work">
-        <span>Email: {{ description.Email }}|</span>
-        <span>web: {{ description.website }}</span>
+        <a href="mailto:zeya007@163.com" target="_blank">
+          Email: {{ description.Email }}
+        </a>
+        |
+        <a :href="description.website" target="_blank">
+          web: {{ description.website }}
+        </a>
       </div>
       <div class="web">
         <span>{{ job.status | test }}</span>
@@ -91,7 +96,7 @@ export default {
           this.resumeStudy = res.data[1];
           this.resumePerson = this.resumeStudy.personel;
           this.resumeWork = res.data[2];
-        //   console.log(res);
+          //   console.log(res);
         } else {
           console.log("接口返回错误");
         }

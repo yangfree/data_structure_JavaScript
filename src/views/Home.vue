@@ -25,7 +25,7 @@
         <h2 class="project-title">项目推荐</h2>
         <div class="project-main">
           <div class="main-left">
-            <div class="left-content transiton-box">
+            <div class="left-content transiton-box" @click="leftProject">
               <div class="transtion">
                 <h3>{{ projectLeft.name }}</h3>
                 <div class="description">
@@ -39,6 +39,7 @@
               class="right-content transiton-box"
               v-for="(item, index) in projectRight"
               :key="index"
+              @click="rightProject"
             >
               <div class="transtion">
                 <h3>{{ item.name }}</h3>
@@ -105,6 +106,16 @@ export default {
     this.getHomeInfo();
   },
   methods: {
+    leftProject() {
+      this.alertBox.typeClass = "default";
+      this.alertBox.content = '暂无更多介绍';
+      this.$refs.Alert.close();
+    },
+    rightProject() {
+      this.alertBox.typeClass = "default";
+      this.alertBox.content = '暂无更多介绍';
+      this.$refs.Alert.close();
+    },
     toAbout() {
       this.$router.push("/about");
     },

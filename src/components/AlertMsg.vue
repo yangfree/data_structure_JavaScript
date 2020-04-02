@@ -46,11 +46,11 @@ export default {
 <style lang="less" scoped>
 .alert {
   position: fixed;
-  top: 20px;
+  top: 45%;
   display: flex;
   justify-content: center;
   line-height: 16px;
-  width: 1200px;
+  width: 100%;
   font-size: 14px;
   z-index: 100;
   box-sizing: border-box;
