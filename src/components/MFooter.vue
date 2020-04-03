@@ -5,7 +5,7 @@
         <span>Create By {{ createBy }} | {{ createDate }}</span>
       </div>
       <div class="footer-right">
-        <a href="http://www.beian.miit.gov.cn/">{{ icp }}</a>
+        <a href="http://www.beian.miit.gov.cn/" target="_blank">{{ icp }}</a>
       </div>
     </footer>
   </div>
@@ -45,6 +45,11 @@ export default {
     border-top: 1px solid #ccc;
     padding: 0 15px;
     box-sizing: border-box;
+    .footer-right {
+      a {
+        color: #777;
+      }
+    }
   }
 }
 </style>

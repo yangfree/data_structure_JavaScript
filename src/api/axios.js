@@ -3,7 +3,7 @@ import axios from "axios";
 
 const $http = axios.create();
 
-$http.defaults.baseURL = "http://127.0.0.1:8080";
+$http.defaults.baseURL = "https://www.jiepp.com";
 $http.defaults.timeout = 5000;
 
 $http.interceptors.request.use(

@@ -2,10 +2,10 @@ const path = require("path");
 
 module.exports = {
   devServer: {
-    port: 8082,
+    port: 8080,
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:3000",
+        target: "http://jiepp.com:3001",
         ws: true,
         changeOrigin: true
       }
