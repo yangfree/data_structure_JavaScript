@@ -2,8 +2,10 @@ import qs from "qs";
 import axios from "axios";
 
 const $http = axios.create();
-
-$http.defaults.baseURL = "https://www.jiepp.com";
+$http.defaults.baseURL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8080"
+    : "https://www.jiepp.com";
 $http.defaults.timeout = 5000;
 
 $http.interceptors.request.use(
