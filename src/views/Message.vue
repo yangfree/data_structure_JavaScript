@@ -3,7 +3,12 @@
     <div class="message-content">
       <div class="message-post">
         <div class="text">
-          <textarea v-model="msg" placeholder="请输入留言内容"></textarea>
+          <textarea
+            v-model="msg"
+            placeholder="请输入留言内容"
+            autofocus="autofocus"
+            ref="textfocus"
+          ></textarea>
         </div>
         <div class="user">
           <div class="user-left">
@@ -34,8 +39,8 @@
             <span>{{ item.username }}</span>
             <span>{{ item.date }}</span>
           </div>
-          <p class="content">
-            {{ item.msg }}
+          <p class="content" v-html="item.msg">
+            <!-- {{ item.msg }} -->
           </p>
           <div class="footer">
             <a
@@ -58,7 +63,7 @@
       :content="alertbox.content"
       :date="alertbox.date"
     />
-    <Loading v-if="loading"/>
+    <Loading v-if="loading" />
   </div>
 </template>
 
@@ -67,7 +72,7 @@ import MRouter from "@/components/MRouter";
 import AlertMsg from "../components/AlertMsg";
 import { getMsg, postMsg } from "@/api/api.js";
 import { dateFormat } from "@/utils/index.js";
-import Loading from '@/components/Loading';
+import Loading from "@/components/Loading";
 
 export default {
   name: "Message",
@@ -97,8 +102,13 @@ export default {
   },
   methods: {
     reply(content, name) {
-      this.msg = `回复${name}: ${content}`;
+      this.msg = `
+      回复${name}: ${content}
+      <br/>------<br/>
+      `;
       document.documentElement.scrollTop = 0;
+      document.getElementById("app").scrollIntoView();
+      this.$refs.textfocus.focus();
     },
     getMsgList() {
       getMsg()
