@@ -39,7 +39,7 @@
               class="right-content transiton-box"
               v-for="(item, index) in projectRight"
               :key="index"
-              @click="rightProject"
+              @click="rightProject(index)"
             >
               <div class="transtion">
                 <h3>{{ item.name }}</h3>
@@ -80,7 +80,7 @@ export default {
     MHeader,
     MFooter,
     AlertMsg,
-    Loading
+    Loading,
   },
   data() {
     return {
@@ -90,16 +90,16 @@ export default {
         icp: "",
         createBy: "",
         createDate: "",
-        version: ""
+        version: "",
       },
       projectLeft: {},
       projectRight: [],
       alertBox: {
         typeClass: "",
         content: "",
-        date: 1500
+        date: 1500,
       },
-      loading: true
+      loading: true,
     };
   },
   mounted() {
@@ -107,21 +107,21 @@ export default {
   },
   methods: {
     leftProject() {
-      this.alertBox.typeClass = "default";
-      this.alertBox.content = '暂无更多介绍';
-      this.$refs.Alert.close();
+      window.open("https://github.com/yangfree");
     },
-    rightProject() {
-      this.alertBox.typeClass = "default";
-      this.alertBox.content = '暂无更多介绍';
-      this.$refs.Alert.close();
+    rightProject(id) {
+      if (id === 0) {
+        window.open("https://github.com/yangfree/Websoket");
+      } else {
+        window.open("https://github.com/yangfree/react-todo");
+      }
     },
     toAbout() {
       this.$router.push("/about");
     },
     getHomeInfo() {
       Promise.all([getHome(), getProjects()])
-        .then(res => {
+        .then((res) => {
           this.loading = false;
           // 首页信息接口处理
           if (res[0].status == 0) {
@@ -141,18 +141,18 @@ export default {
             this.$refs.Alert.close();
           }
         })
-        .catch(err => {
+        .catch((err) => {
           this.alertBox.typeClass = "error";
           this.alertBox.content = err;
           this.$refs.Alert.close();
         });
-    }
+    },
   },
   filters: {
     version(val) {
       return `V ${val}.0.0`;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

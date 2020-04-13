@@ -5,11 +5,23 @@
     </div>
     <div class="about-content">
       <h3>{{ choose.name }}</h3>
-      <ul>
-        <li v-for="(item, index) in choose.list" :key="index">
-          {{ item.item }}
-        </li>
-      </ul>
+      <div class="content-time">
+        <ul>
+          <li
+            v-for="(item, index) in choose.list"
+            :key="index"
+            :class="{ active: index === 1 }"
+          >
+            <span class="version">版本: {{ item.version }}</span>
+            <div class="time">
+              <span>{{ item.time }}</span>
+              <p>
+                {{ item.content }}
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
       <h3>{{ nextVersion.name }}</h3>
       <ul>
         <li v-for="(item, index) in nextVersion.update" :key="index">

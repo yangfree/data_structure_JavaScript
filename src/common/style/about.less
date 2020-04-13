@@ -11,7 +11,7 @@
     border-radius: 5px;
   }
   .about-content {
-      min-height: 550px;
+    min-height: 550px;
     padding: 35px 15px;
     h3 {
       padding-bottom: 10px;
@@ -37,6 +37,44 @@
       text-indent: 2em;
       word-break: break-all;
       word-wrap: break-word;
+    }
+    .content-time {
+      max-height: 560px;
+      width: 100%;
+      padding: 35px 250px;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        background-color: transparent;
+        border-left: 3px solid #ccc;
+
+        li {
+          position: relative;
+          .version {
+            position: absolute;
+            top: 0;
+            left: -200px;
+          }
+        }
+        li::before {
+          content: "";
+          width: 10px;
+          height: 10px;
+          background-color: #ccc;
+          border: 5px solid #fff;
+          border-radius: 50%;
+          left: -27px;
+          top: 0;
+          position: absolute;
+        }
+        li.active::before {
+          background-color: skyblue;
+        }
+      }
     }
   }
 }
