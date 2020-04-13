@@ -17,6 +17,7 @@
         </div>
         <div class="blog-btn">
           <a href="https://blog.jiepp.com/" target="_blank">个人博客</a>
+          <a href="javascript:;void 0" @click="login">注册登陆</a>
         </div>
       </div>
     </div>
@@ -64,15 +65,18 @@
       :createDate="home.createDate"
     ></MFooter>
     <loading v-if="loading" />
+    <Login v-if="loginShow" @hideLogin="hideLogin"/>
   </div>
 </template>
 
 <script>
+import { getHome, getProjects } from "@/api/api.js";
+
 import MHeader from "@/components/MHeader.vue";
 import MFooter from "@/components/MFooter.vue";
-import { getHome, getProjects } from "@/api/api.js";
 import AlertMsg from "@/components/AlertMsg.vue";
 import Loading from "@/components/Loading.vue";
+import Login from "@/components/Login.vue";
 
 export default {
   name: "Home",
@@ -81,6 +85,7 @@ export default {
     MFooter,
     AlertMsg,
     Loading,
+    Login
   },
   data() {
     return {
@@ -100,12 +105,19 @@ export default {
         date: 1500,
       },
       loading: true,
+      loginShow: true,
     };
   },
   mounted() {
     this.getHomeInfo();
   },
   methods: {
+    hideLogin(){
+      this.loginShow = false;
+    },
+    login(){
+      this.loginShow = true;
+    },
     leftProject() {
       window.open("https://github.com/yangfree");
     },
