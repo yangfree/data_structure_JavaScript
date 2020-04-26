@@ -9,39 +9,61 @@
       </div>
       <nav class="header-right">
         <ul>
-          <li v-for="(item, index) in nav" :key="index" @click="goSome(item.path)">
+          <li
+            v-for="(item, index) in nav"
+            :key="index"
+            @click="goSome(item.path)"
+          >
             {{ item.item }}
           </li>
         </ul>
+        <div class="user" @click="login">登陆注册</div>
       </nav>
     </header>
+    <Login v-if="loginShow" @hideLogin="hideLogin" />
   </div>
 </template>
 
 <script>
+import Login from "@/components/Login.vue";
+
 export default {
   name: "MHeader",
+  components: {
+    Login,
+  },
   props: {
     title: {
       type: String,
-      default: ""
+      default: "",
     },
     des: {
       type: String,
-      default: ""
+      default: "",
     },
     nav: {
       type: Array,
       default: function() {
         return [];
-      }
+      },
+    },
+  },
+  data(){
+    return {
+      loginShow: false
     }
   },
   methods: {
+    hideLogin(){
+      this.loginShow = false;
+    },
+    login(){
+      this.loginShow = true;
+    },
     goSome(path) {
       this.$router.push(`/${path}`);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -70,12 +92,16 @@ export default {
       }
     }
     .header-right {
-      flex: 1;
+      flex: 2;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+
       ul {
+        flex: 4;
         //   flex-direction: row-reverse;
         display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
+        justify-content: space-around;
         li {
           cursor: pointer;
         }
@@ -83,6 +109,11 @@ export default {
           transform: scale(1.5);
           transition: all 0.5s ease-in-out;
         }
+      }
+      .user {
+        flex: 1;
+        text-align: center;
+        cursor: pointer;
       }
     }
   }

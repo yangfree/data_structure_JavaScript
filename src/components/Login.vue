@@ -64,11 +64,11 @@ export default {
   },
   methods: {
     submitInfo() {
-      // TODO 提交信息
+      // TODO: 提交信息
       alert("提交信息");
     },
     loginIn() {
-      // TODO 登陆功能
+      // TODO: 登陆功能
       alert("登陆");
     },
     goLogin() {
@@ -88,7 +88,7 @@ export default {
 
 <style lang="less" scoped>
 .login {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
